@@ -215,3 +215,5 @@ ENV/
 /site
 tokenotes/settings.prod.py
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
+bubble/views.py
+bubble/migrations/0023_alter_edge_options.py

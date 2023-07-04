@@ -5,13 +5,22 @@ from django.db.models import Q
 from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
 
-from .serializers import Canvaserializer
+from .serializers import CanvasSerializer,  NodeSerializer
 
 
 class CanvasDetailView(generics.RetrieveAPIView):
     queryset = models.Canvas.objects.all()
-    serializer_class = Canvaserializer
+    serializer_class = CanvasSerializer
 
+
+class CanvasNodeList(generics.ListCreateAPIView):
+    # queryset = models.Node.objects.all()
+    serializer_class = NodeSerializer
+
+    def get_queryset(self):
+        course_id = self.kwargs['canvas_id']
+        canvas = models.Canvas.objects.get(pk=course_id)
+        return models.Node.objects.filter(canvas=canvas)
 
 #
 # class CanvasNodeList(generics.ListCreateAPIView):

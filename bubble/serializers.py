@@ -67,7 +67,7 @@ from . import models
 #                 self.Meta.depth = 2
 #
 
-class Canvaserializer(serializers.ModelSerializer):
+class CanvasSerializer(serializers.ModelSerializer):
     # category_name = serializers.RelatedField(source='category', read_only=True)
     # category = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # category = serializers.StringRelatedField(many=True)
@@ -79,8 +79,15 @@ class Canvaserializer(serializers.ModelSerializer):
         # depth = 1
 
     def __init__(self, *args, **kwargs):
-        super(Canvaserializer, self).__init__(*args, **kwargs)
+        super(CanvasSerializer, self).__init__(*args, **kwargs)
         request = self.context.get('request')
         self.Meta.depth = 0
         if request and request.method == 'GET':
             self.Meta.depth = 1
+
+
+class NodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Node
+        fields = ['canvas','id','label','style', 'link','posX','posY']
+
