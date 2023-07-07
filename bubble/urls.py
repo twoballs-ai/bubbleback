@@ -5,7 +5,8 @@ from bubble import views
 urlpatterns = [
     # path('node/<int:pk>', views.NodeDetailView.as_view()),
     path('canvas/<int:pk>', views.CanvasDetailView.as_view()),
-    path('node/<int:canvas_id>', views.CanvasNodeList.as_view()),
+    path('node-list/<int:canvas_id>', views.CanvasNodeList.as_view()),
+    path('node-detail/<int:canvas_id>/<str:id>', views.NodeDetailView.as_view()),
     # path('canvas-nodes/<int:canvas_id>', views.CanvasNodeList.as_view()),
     # path('nodes/<int:pk>', views.NodeDetail.as_view()),
 ]

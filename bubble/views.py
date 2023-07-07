@@ -22,6 +22,11 @@ class CanvasNodeList(generics.ListCreateAPIView):
         canvas = models.Canvas.objects.get(pk=course_id)
         return models.Node.objects.filter(canvas=canvas)
 
+
+class NodeDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Node.objects.all()
+    serializer_class = NodeSerializer
+    lookup_field = 'id'
 #
 # class CanvasNodeList(generics.ListCreateAPIView):
 #     serializer_class = NodeSerializer
