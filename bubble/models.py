@@ -13,7 +13,6 @@ class Node(models.Model):
     id = models.CharField(primary_key=True, max_length=100)
     label = models.CharField(max_length=100)
     style = models.CharField(max_length=100)
-    link = models.CharField(max_length=100)
     posX = models.IntegerField()
     posY = models.IntegerField()
     class Meta:
@@ -26,8 +25,6 @@ class Node(models.Model):
 
 class Edge(models.Model):
     canvas = models.ForeignKey(Canvas, on_delete=models.CASCADE, related_name='edges')
-    id = models.CharField(primary_key=True, max_length=100)
-    label = models.CharField(max_length=100)
     source = models.CharField(max_length=100)
     target = models.CharField(max_length=100)
 
@@ -36,7 +33,7 @@ class Edge(models.Model):
         verbose_name_plural = 'Узлы'
 
     def __str__(self):
-        return self.id
+        return f"{self.source}-{self.target}"  
 #
 #
 # class Node(models.Model):

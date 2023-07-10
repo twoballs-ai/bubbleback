@@ -5,7 +5,7 @@ from django.db.models import Q
 from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
 
-from .serializers import CanvasSerializer,  NodeSerializer
+from .serializers import CanvasSerializer, EdgeSerializer,  NodeSerializer
 
 
 class CanvasDetailView(generics.RetrieveAPIView):
@@ -18,8 +18,8 @@ class CanvasNodeList(generics.ListCreateAPIView):
     serializer_class = NodeSerializer
 
     def get_queryset(self):
-        course_id = self.kwargs['canvas_id']
-        canvas = models.Canvas.objects.get(pk=course_id)
+        canvas_id = self.kwargs['canvas_id']
+        canvas = models.Canvas.objects.get(pk=canvas_id)
         return models.Node.objects.filter(canvas=canvas)
 
 
@@ -27,6 +27,22 @@ class NodeDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Node.objects.all()
     serializer_class = NodeSerializer
     lookup_field = 'id'
+
+
+class CanvasEdgeList(generics.ListCreateAPIView):
+    # queryset = models.Node.objects.all()
+    serializer_class = EdgeSerializer
+
+    def get_queryset(self):
+        canvas_id = self.kwargs['canvas_id']
+        canvas = models.Canvas.objects.get(pk=canvas_id)
+        return models.Edge.objects.filter(canvas=canvas)
+
+
+class EdgeDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Edge.objects.all()
+    serializer_class = EdgeSerializer
+
 #
 # class CanvasNodeList(generics.ListCreateAPIView):
 #     serializer_class = NodeSerializer
