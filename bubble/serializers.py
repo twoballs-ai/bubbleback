@@ -89,7 +89,7 @@ class CanvasSerializer(serializers.ModelSerializer):
 class NodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Node
-        fields = ['canvas','id','label','style','posX','posY']
+        fields = ['canvas','id','node_id','label','style','posX','posY']
 
 
 class EdgeSerializer(serializers.ModelSerializer):

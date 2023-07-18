@@ -10,7 +10,7 @@ class Canvas(models.Model):
 
 class Node(models.Model):
     canvas = models.ForeignKey(Canvas, on_delete=models.CASCADE, related_name='nodes')
-    id = models.CharField(primary_key=True, max_length=100)
+    node_id = models.CharField(max_length=100)
     label = models.CharField(max_length=100)
     style = models.CharField(max_length=100)
     posX = models.IntegerField()
@@ -20,7 +20,7 @@ class Node(models.Model):
         verbose_name_plural = 'Ноды'
 
     def __str__(self):
-        return self.id
+        return self.node_id
 
 
 class Edge(models.Model):

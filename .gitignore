@@ -220,3 +220,5 @@ bubble/migrations/0023_alter_edge_options.py
 bubble/migrations/0024_alter_edge_id.py
 bubble/migrations/0025_remove_edge_label.py
 bubble/migrations/0026_remove_node_link.py
+bubble/migrations/0027_node_nodeid_alter_node_id.py
+bubble/migrations/0028_rename_nodeid_node_node_id.py
