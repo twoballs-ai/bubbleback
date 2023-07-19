@@ -26,7 +26,7 @@ class CanvasNodeList(generics.ListCreateAPIView):
 class NodeDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Node.objects.all()
     serializer_class = NodeSerializer
-    lookup_field = 'id'
+
 
 
 class CanvasEdgeList(generics.ListCreateAPIView):
