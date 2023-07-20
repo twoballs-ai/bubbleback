@@ -25,8 +25,12 @@ class Node(models.Model):
 
 class Edge(models.Model):
     canvas = models.ForeignKey(Canvas, on_delete=models.CASCADE, related_name='edges')
-    source = models.CharField(max_length=100)
-    target = models.CharField(max_length=100)
+    # source = models.CharField(max_length=100)
+    source = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='node_edges_source')
+
+    # target = models.CharField(max_length=100)
+    target = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='node_edges_target')
+
 
     class Meta:
         verbose_name = 'Узлы'

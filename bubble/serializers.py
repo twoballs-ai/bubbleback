@@ -96,3 +96,10 @@ class EdgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Edge
         fields = ['canvas','id','source', 'target']
+
+    def __init__(self, *args, **kwargs):
+        super(EdgeSerializer, self).__init__(*args, **kwargs)
+        request = self.context.get('request')
+        self.Meta.depth = 0
+        if request and request.method == 'GET':
+            self.Meta.depth = 1
