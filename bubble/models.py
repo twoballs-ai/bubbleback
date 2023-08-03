@@ -38,6 +38,18 @@ class Edge(models.Model):
 
     def __str__(self):
         return f"{self.source}-{self.target}"  
+    
+class Post(models.Model):
+    lesson = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='lesson_post')
+    blocks_count = models.IntegerField()
+
+
+class Block(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_blocks')
+    id = models.CharField(max_length=11, primary_key=True)
+    type = models.CharField(max_length=11)
+    data = models.CharField(max_length=150)
+
 #
 #
 # class Node(models.Model):

@@ -9,6 +9,7 @@ urlpatterns = [
     path('node-detail/<int:canvas_id>/<int:pk>', views.NodeDetailView.as_view()),
     path('edge-list/<int:canvas_id>', views.CanvasEdgeList.as_view()),
     path('edge-detail/<int:canvas_id>/<int:pk>', views.EdgeDetailView.as_view()),
+    path('data', views.save_post),
     # path('canvas-nodes/<int:canvas_id>', views.CanvasNodeList.as_view()),
     # path('nodes/<int:pk>', views.NodeDetail.as_view()),
 ]

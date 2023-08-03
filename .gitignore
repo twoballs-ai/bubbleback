@@ -224,3 +224,4 @@ bubble/migrations/0027_node_nodeid_alter_node_id.py
 bubble/migrations/0028_rename_nodeid_node_node_id.py
 bubble/migrations/0029_alter_edge_source.py
 bubble/migrations/0030_alter_edge_source_alter_edge_target.py
+bubble/migrations
