@@ -91,6 +91,13 @@ class NodeSerializer(serializers.ModelSerializer):
         model = models.Node
         fields = ['canvas','id','node_id','label','style','posX','posY']
 
+    # def __init__(self, *args, **kwargs):
+    #     super(NodeSerializer, self).__init__(*args, **kwargs)
+    #     request = self.context.get('request')
+    #     self.Meta.depth = 0
+    #     if request and request.method == 'GET':
+    #         self.Meta.depth = 2
+
 
 class EdgeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -103,3 +110,15 @@ class EdgeSerializer(serializers.ModelSerializer):
         self.Meta.depth = 0
         if request and request.method == 'GET':
             self.Meta.depth = 1
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Post
+        fields = ['id','canvas','node', 'post_blocks']
+
+
+class BlocksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Block
+        fields = ['id','post','type', 'data']

@@ -40,8 +40,9 @@ class Edge(models.Model):
         return f"{self.source}-{self.target}"  
     
 class Post(models.Model):
-    lesson = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='lesson_post')
-    blocks_count = models.IntegerField()
+    canvas = models.ForeignKey(Canvas, on_delete=models.CASCADE, related_name='canvas_post')
+    node = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='lesson_post')
+    # blocks_count = models.IntegerField()
 
 
 class Block(models.Model):
