@@ -116,9 +116,16 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Post
         fields = ['id','canvas','node', 'post_blocks']
+    def __init__(self, *args, **kwargs):
+        super(PostSerializer, self).__init__(*args, **kwargs)
+        request = self.context.get('request')
+        self.Meta.depth = 0
+        if request and request.method == 'GET':
+            self.Meta.depth = 1
 
 
 class BlocksSerializer(serializers.ModelSerializer):
+    data = serializers.JSONField() 
     class Meta:
         model = models.Block
         fields = ['id','post','type', 'data']

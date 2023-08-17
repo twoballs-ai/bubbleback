@@ -11,6 +11,7 @@ urlpatterns = [
     path('edge-detail/<int:canvas_id>/<int:pk>', views.EdgeDetailView.as_view()),
     # path('data', views.save_post),
     path('post-list/<int:canvas_id>', views.CanvasPostList.as_view()),
+    path('node-post-detail/<int:node_id>', views.NodePostDetailView.as_view()),
     path('post-detail/<int:canvas_id>/<int:pk>', views.PostDetailView.as_view()),
     path('blocks-list/<int:post_id>', views.PostBlocksList.as_view()),
     # path('canvas-nodes/<int:canvas_id>', views.CanvasNodeList.as_view()),

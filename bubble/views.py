@@ -80,6 +80,18 @@ class CanvasPostList(generics.ListCreateAPIView):
         return models.Post.objects.filter(canvas=canvas)
 
 
+class NodePostDetailView(generics.ListCreateAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        node_id = self.kwargs['node_id']
+        node = models.Node.objects.get(pk=node_id)
+        return models.Post.objects.filter(node=node)
+
+
+
+
+
 class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Post.objects.all()
     serializer_class = PostSerializer
