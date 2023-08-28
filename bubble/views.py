@@ -8,7 +8,7 @@ import json
 from rest_framework import generics
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
-from .serializers import BlocksSerializer, CanvasSerializer, EdgeSerializer,  NodeSerializer, PostSerializer
+from .serializers import CanvasSerializer, EdgeSerializer,  NodeSerializer, PostSerializer
 from rest_framework.parsers import JSONParser
 
 class CanvasDetailView(generics.RetrieveAPIView):
@@ -98,11 +98,11 @@ class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
-class PostBlocksList(generics.ListCreateAPIView):
-    # queryset = models.Node.objects.all()
-    serializer_class = BlocksSerializer
+# class PostBlocksList(generics.ListCreateAPIView):
+#     # queryset = models.Node.objects.all()
+#     serializer_class = BlocksSerializer
 
-    def get_queryset(self):
-        post_id = self.kwargs['post_id']
-        post = models.Post.objects.get(pk=post_id)
-        return models.Block.objects.filter(post=post)
+#     def get_queryset(self):
+#         post_id = self.kwargs['post_id']
+#         post = models.Post.objects.get(pk=post_id)
+#         return models.Block.objects.filter(post=post)

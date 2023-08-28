@@ -42,14 +42,15 @@ class Edge(models.Model):
 class Post(models.Model):
     canvas = models.ForeignKey(Canvas, on_delete=models.CASCADE, related_name='canvas_post')
     node = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='lesson_post')
+    metadata = models.JSONField(null=True, blank=True)
     # blocks_count = models.IntegerField()
 
 
-class Block(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_blocks')
-    id = models.CharField(max_length=11, primary_key=True)
-    type = models.CharField(max_length=11)
-    data = models.CharField(max_length=150)
+# class Block(models.Model):
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_blocks')
+#     id = models.CharField(max_length=11, primary_key=True)
+#     type = models.CharField(max_length=11)
+#     data = models.CharField(max_length=150)
 
 #
 #

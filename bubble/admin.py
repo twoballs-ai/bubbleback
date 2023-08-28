@@ -4,6 +4,6 @@ from . import models
 admin.site.register(models.Canvas)
 admin.site.register(models.Node)
 admin.site.register(models.Post)
-admin.site.register(models.Block)
+# admin.site.register(models.Block)
 admin.site.register(models.Edge)
 # admin.site.register(models.DataEdge)

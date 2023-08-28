@@ -115,7 +115,7 @@ class EdgeSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Post
-        fields = ['id','canvas','node', 'post_blocks']
+        fields = ['id','canvas','node', 'metadata']
     def __init__(self, *args, **kwargs):
         super(PostSerializer, self).__init__(*args, **kwargs)
         request = self.context.get('request')
@@ -124,8 +124,8 @@ class PostSerializer(serializers.ModelSerializer):
             self.Meta.depth = 1
 
 
-class BlocksSerializer(serializers.ModelSerializer):
-    data = serializers.JSONField() 
-    class Meta:
-        model = models.Block
-        fields = ['id','post','type', 'data']
+# class BlocksSerializer(serializers.ModelSerializer):
+#     data = serializers.JSONField() 
+#     class Meta:
+#         model = models.Block
+#         fields = ['id','post','type', 'data']
